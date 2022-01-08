@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Centering in CSS</title>
+    <link href="style.css" rel="stylesheet" type="text/css" />
+  </head>
+  <body>
+    <div>
+      <main>
+        <nav id="navbar" >
+          <header>Centering in CSS</header>
+            <ul>
+              <li><a class="nav-link" href="#Introduction">Introduction</a></li>
+              <li class="navbar-li"><a class="nav-link" href="#Horizontal_Centering">Horizontal Centering</a></li>
+              <li><a class="nav-link" href="#Vertical_Centering">Vertical Centering</a></li>
+              <li><a class="nav-link" href="#Vertical_and_Horizontal_Centering">Vertical and Horizontal Centering</a></li>
+              <li><a class="nav-link" href="#Conclusion">Conclusion</a></li> 
+            </ul>
+        </nav>
+    </div>
+     
+    <div>
+    <main id="main-doc">
+      <section class="main-section" id="Introduction">
+        <header>Introduction</header>
+          <article>
+            <p>Web browsers treat every element as a kind of box. However, CSS has two different types of boxes — block and inline.</p> 
+            <p>A <strong>block element</strong> always starts on a new line, and fills up the horizontal space left and right on the web page. You can add margins and padding on all four sides of any block element — top, right, left, and bottom. Some examples of block elements are:</p>
+            <code>div, p, footer, etc.</code>
+            <p><strong>Inline elements</strong> do not start on a new line, they appear on the same line as the content and tags beside them. Some examples of inline elements are:</p>
+            <code>span, strong, img, etc.</code>
+            <p>When it comes to margins and padding, browsers treat inline elements differently. You can add space to the left and right on an inline element, but you cannot add height to the top or bottom padding or margin of an inline element. Inline elements can actually appear within block elements</p>
+            <p>Inline-block elements are similar to inline elements, except they can have padding and margins added on all four sides. You’ll have to declare display: inline-block in your CSS code. One common use for using inline-block is for creating navigation links horizontally</p>
+          </article>
+      </section>
+      <section class="main-section" id="Horizontal_Centering">
+        <header>Horizontal Centering</header>
+          <article>
+            <p>You can center inline elements horizontally, within a block-level parent element, with just:</p>
+            <code>
+              .container { 
+              text-align: center; 
+              }
+            </code>
+            <p>This will work for inline, inline-block, inline-table, inline-flex, etc.</p>
+            <ul id="bullet">
+              <li>Block level element</li>
+            </ul>
+            <p>You can center a block-level element by giving it margin-left and margin-right of auto (and it has a set width, otherwise it would be full width and wouldn’t need centering). That’s often done with shorthand like this:</p>
+            <code>
+              .center-me { 
+              margin: 0 auto; 
+              }
+            </code>
+          
+            <ul id="bullet">
+              <li>Block level element</li>
+            </ul>
+            <p>If you have two or more block-level elements that need to be centered horizontally in a row, chances are you’d be better served making them a different display type. Here’s an example of making them inline-block and an example of flexbox:</p>
+            <code>
+              .flex-center {
+              display: flex;
+              justify-content: center;
+              }
+            </code>
+          </article>
+    </section>
+
+    <section class="main-section" id="Vertical_Centering">
+      <header>Vertical Centering</header>
+        <article>
+        <p>Vertical centering is a bit trickier in CSS. You need two div's for vertical centering. The div containing the content (child) must have a width and height.</p>
+        <ul id="bullet">
+          <li>Padding Method</li>
+        </ul>
+        <p>For a single line: Sometimes inline / text elements can appear vertically centered, just because there is equal padding above and below them.</p>
+          <code>
+            .link { 
+              padding-top: 30px; 
+              padding-bottom: 30px; 
+            }
+          </code>
+      
+        <ul id="bullet">
+          <li>Line-Height Method</li>
+        </ul>
+        <p>If padding is not an option for some reason, and you are trying to center some text that you know will not wrap, use line-height. This method will work when you want to vertically center a single line of text. All we need to do is set a line-height on the element containing the text larger than its font-size. By default equal space will be given above and below the text and so the text will sit in the vertical center.</p>
+          <code>
+            #child {
+              line-height: 200px;
+            }
+          </code>
+        </article>
+    </section>
+    <section class="main-section" id="Vertical_and_Horizontal_Centering">
+      <header>Vertical and Horizontal Centering</header>
+        <article>
+        <p>I recently needed to center something both horizontally and vertically and started thinking that there might be better ways of doing it if I could disregard IE7 and older. The technique I ended up with uses display:table to center the whole page and seems to work well, though there is one caveat.</p>
+        <p>The following CSS is used for the centering effect:</p>
+          <code>
+            html {
+            display:table;
+            }
+            
+            body {
+              display:table-cell;
+              vertical-align:middle;
+            }
+          </code>
+        <ul id="bullet">
+          <li>Margin auto on a flex-item </li>
+        </ul>
+        <p>Finally getting into modern CSS territory, flexbox introduced a pretty awesome behavior for auto margins. Now, it will not only horizontally center the element as it did in block layouts, but also center it in the vertical axis:</p>
+          <code>
+            .container{
+              display:flex;
+            }
+            
+            .element{
+              margin:auto;
+            }
+          </code>
+    
+          <p>The only major limitation is that it will only work with a single element.</p>
+        </article>
+    </section>
+    <section class="main-section" id="Conclusion">
+      <header>Conclusion</header>
+        <article>
+        <p>None of the methods above is complicated and I am sure if you use each once or twice it’ll be easy to use again. The difficultly if there is one is that none of the methods above is perfect for all occasions. The trick is to understand several of the above and use each appropriately.</p> 
+        <p>Some of the methods work better for inline elements and others work better for block level elements. Some might work better with your preference for developing a layout and some don’t work in older versions of a certain browser we all know well.</p>
+        </article>
+    </section>
+    <section class="main-section" id="credits">
+      <strong>Click here</strong> <a href="https://medium.com/@DaphneWatson/css-display-properties-block-inline-and-inline-block-how-to-tell-the-difference-7d3a1e6e3051" target="_blank">to know more about Centering in CSS</a>
+    </section>
+  </main>
+  </div>
+    <script src="script.js"></script>
+  </body>
+</html>
